@@ -16,7 +16,7 @@ class TelegramParserImplTest {
     @Test
     void padLeft() {
         assertThat(parser.parse("TODO"))
-                .isEqualTo("to be done");
+                .isEqualTo(null);
     }
 
 }
