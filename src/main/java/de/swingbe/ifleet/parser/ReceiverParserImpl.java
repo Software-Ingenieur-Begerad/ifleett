@@ -1,17 +1,14 @@
-package de.swingbe.ifleet.model;
+package de.swingbe.ifleet.parser;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.swingbe.ifleet.model.Receiver;
 
-public class ReceiverParser {
-    private final static Logger LOG = LoggerFactory.getLogger(ReceiverParser.class);
+class ReceiverParserImpl implements ReceiverParser {
 
-    public static Receiver parseReceiver(final String input) {
-        LOG.debug("input: {}", input);
+    @Override
+    public Receiver parse(final String input) {
 
         Receiver receiver = null;
         String[] splits = input.split("#");
-        LOG.debug("splits: " + splits.length);
 
         //parse receiver part A
         String receiverPartA = null;
@@ -30,4 +27,5 @@ public class ReceiverParser {
         }
         return receiver;
     }
+
 }

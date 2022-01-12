@@ -14,16 +14,6 @@ public class Position {
         this.heading = heading;
     }
 
-    @Override
-    public String toString() {
-        return "Position{" +
-                "longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", velocity=" + velocity +
-                ", heading=" + heading +
-                '}';
-    }
-
     public long getLongitude() {
         return longitude;
     }
@@ -39,4 +29,15 @@ public class Position {
     public int getHeading() {
         return heading;
     }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", velocity=" + velocity +
+                ", heading=" + heading +
+                '}';
+    }
+
 }

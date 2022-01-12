@@ -1,6 +1,7 @@
 package de.swingbe.ifleet.model;
 
 public class LocationMessage {
+
     private final Position position;
 
     public LocationMessage(Position position) {

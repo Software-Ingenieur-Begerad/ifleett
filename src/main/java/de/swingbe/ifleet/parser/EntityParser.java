@@ -1,11 +1,11 @@
-package de.swingbe.ifleet;
+package de.swingbe.ifleet.parser;
 
 import de.swingbe.ifleet.model.Entity;
 
 /**
- * Parses an {@link de.swingbe.ifleet.model.Entity}.
+ * Parses an {@link Entity}.
  */
-public interface TelegramParser {
+public interface EntityParser {
 
     /**
      * Returns a new {@link Entity} that holds the parses telegram.
@@ -13,5 +13,5 @@ public interface TelegramParser {
      * @param input the {@link String} to be parsed
      * @return the parsed {@link Entity}
      */
-    Entity parse(String input);
+    Entity parse(final String input);
 }

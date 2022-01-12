@@ -1,5 +1,6 @@
 package de.swingbe.ifleet;
 
+import de.swingbe.ifleet.parser.EntityParserFactory;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,11 +12,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 class TelegramParserImplTest {
 
-    private final TelegramParserImpl parser = new TelegramParserImpl();
-
     @Test
     void padLeft() {
-        assertThat(parser.parse("TODO"))
+
+        assertThat(EntityParserFactory.createEntityParser().parse("TODO"))
                 .isEqualTo(null);
     }
 

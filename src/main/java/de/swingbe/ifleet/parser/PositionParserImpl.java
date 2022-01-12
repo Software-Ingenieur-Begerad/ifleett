@@ -1,22 +1,22 @@
-package de.swingbe.ifleet.model;
+package de.swingbe.ifleet.parser;
 
+import de.swingbe.ifleet.model.Position;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-import static de.swingbe.ifleet.model.TeleHeaderParser.isNumeric;
+import static de.swingbe.ifleet.parser.TelegramHdrParserImpl.isNumeric;
 
-public class PositionParser {
-    private final static Logger LOG = LoggerFactory.getLogger(PositionParser.class);
+public class PositionParserImpl implements PositionParser {
+    private final static Logger LOG = LoggerFactory.getLogger(PositionParserImpl.class);
 
-    public static Position parsePosition(String input) {
-        LOG.debug("input: {}", input);
+    @Override
+    public Position parse(final String input) {
 
         Position position = null;
 
         String[] splits = input.split("#");
-        LOG.debug("splits: " + splits.length);
 
         //parse NetPoint
         //parse RelPosition
@@ -26,20 +26,17 @@ public class PositionParser {
             lat = splits[2];
         }
 
-
         //parse lon
         String lon = null;
         if (splits.length > 3) {
             lon = splits[3];
         }
 
-
         //parse vel
         String vel = null;
         if (splits.length > 4) {
             vel = splits[4];
         }
-
 
         //parse hdg
         String hdg = null;

@@ -1,22 +1,20 @@
-package de.swingbe.ifleet.model;
+package de.swingbe.ifleet.parser;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.swingbe.ifleet.model.Communication;
+import de.swingbe.ifleet.model.Entity;
 
 import java.util.Arrays;
 
-import static de.swingbe.ifleet.model.ComParser.parseCc;
+class EntityParserImpl implements EntityParser {
 
-public class EntityParser {
+    EntityParserImpl() {
+    }
 
-    private final static Logger LOG = LoggerFactory.getLogger(EntityParser.class);
+    @Override
+    public Entity parse(final String input) {
 
-    public static Entity parseLogEntry(String input) {
-        LOG.debug("input: {}", input);
-
-        Entity logEntry = null;
+        Entity entity = null;
         String[] splits = input.split(" ");
-        LOG.debug("splits: " + splits.length);
 
         //parse date
         String date = null;
@@ -70,13 +68,13 @@ public class EntityParser {
         if (splits.length > 9) {
             String[] splitsSup = Arrays.copyOfRange(splits, 9, splits.length);
             String inputSup = String.join(" ", splitsSup);
-            communication = parseCc(inputSup);
+            communication = ComParserFactory.createComParser().parse(inputSup);
         }
 
         if (date != null && time != null && logLevel != null && addressPartA != null && addressPartB != null && peer != null && addressNext != null && direction != null && communication != null) {
-            logEntry = new Entity(date, time, logLevel, addressPartA, addressPartB, peer, addressNext, direction, communication);
+            entity = new Entity(date, time, logLevel, addressPartA, addressPartB, peer, addressNext, direction, communication);
         }
 
-        return logEntry;
+        return entity;
     }
 }

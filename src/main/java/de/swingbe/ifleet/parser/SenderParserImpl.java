@@ -1,18 +1,14 @@
-package de.swingbe.ifleet.model;
+package de.swingbe.ifleet.parser;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import de.swingbe.ifleet.model.Sender;
 
-public class SenderParser {
-    private final static Logger LOG = LoggerFactory.getLogger(SenderParser.class);
+class SenderParserImpl implements SenderParser {
 
-    public static Sender parseSender(final String input) {
-        LOG.debug("input: {}", input);
+    public Sender parse(final String input) {
 
         Sender sender = null;
 
         String[] splits = input.split("#");
-        LOG.debug("splits: " + splits.length);
 
         //parse sender part A
         String senderPartA = null;

@@ -10,19 +10,19 @@ public class Header {
         this.receiver = receiver;
     }
 
-    @Override
-    public String toString() {
-        return "Header{" +
-                "sender=" + sender +
-                ", receiver=" + receiver +
-                '}';
-    }
-
     public Sender getSender() {
         return sender;
     }
 
     public Receiver getReceiver() {
         return receiver;
+    }
+
+    @Override
+    public String toString() {
+        return "Header{" +
+                "sender=" + sender +
+                ", receiver=" + receiver +
+                '}';
     }
 }

@@ -2,15 +2,15 @@ package de.swingbe.ifleet.model;
 
 public class Telegram {
 
-    private final TeleHeader teleHeader;
+    private final TelegramHdr teleHeader;
     private final LocationMessage locationMessage;
 
-    public Telegram(TeleHeader teleHeader, LocationMessage locationMessage) {
+    public Telegram(TelegramHdr teleHeader, LocationMessage locationMessage) {
         this.teleHeader = teleHeader;
         this.locationMessage = locationMessage;
     }
 
-    public TeleHeader getTeleHeader() {
+    public TelegramHdr getTeleHeader() {
         return teleHeader;
     }
 

@@ -1,20 +1,27 @@
-package de.swingbe.ifleet.model;
+package de.swingbe.ifleet.parser;
 
+import de.swingbe.ifleet.model.TelegramHdr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-public class TeleHeaderParser {
-    private final static Logger LOG = LoggerFactory.getLogger(TeleHeaderParser.class);
+class TelegramHdrParserImpl implements TelegramHdrParser {
 
-    public static TeleHeader parseTeleHeader(String input) {
-        LOG.debug("input: {}", input);
+    private final static Logger LOG = LoggerFactory.getLogger(TelegramHdrParserImpl.class);
 
-        TeleHeader teleHeader = null;
+    TelegramHdrParserImpl() {
+    }
+
+    public static boolean isNumeric(String str) {
+        return str != null && str.matches("[0-9.]+");
+    }
+
+    public TelegramHdr parse(final String input) {
+
+        TelegramHdr teleHeader = null;
 
         String[] splits = input.split("#");
-        LOG.debug("splits: " + splits.length);
 
         //parse id
         String type = null;
@@ -40,7 +47,7 @@ public class TeleHeaderParser {
 
             if (typeIsNumeric && idIsNumeric) {
                 try {
-                    teleHeader = new TeleHeader(Integer.parseInt(type), version, Integer.parseInt(id));
+                    teleHeader = new TelegramHdr(Integer.parseInt(type), version, Integer.parseInt(id));
                 } catch (NumberFormatException e) {
                     LOG.error("parsing telegram header failed, message: " + e.getMessage() + ", trace: " + Arrays.toString(e.getStackTrace()));
                 }
@@ -49,9 +56,5 @@ public class TeleHeaderParser {
 
         return teleHeader;
 
-    }
-
-    public static boolean isNumeric(String str) {
-        return str != null && str.matches("[0-9.]+");
     }
 }

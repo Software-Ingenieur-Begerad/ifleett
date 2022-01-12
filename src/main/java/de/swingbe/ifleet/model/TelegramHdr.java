@@ -1,12 +1,12 @@
 package de.swingbe.ifleet.model;
 
-public class TeleHeader {
+public class TelegramHdr {
 
     private final int teleType;
     private final String teleVersion;
     private final int teleId;
 
-    public TeleHeader(int teleType, String teleVersion, int teleId) {
+    public TelegramHdr(int teleType, String teleVersion, int teleId) {
         this.teleType = teleType;
         this.teleVersion = teleVersion;
         this.teleId = teleId;
@@ -26,7 +26,7 @@ public class TeleHeader {
 
     @Override
     public String toString() {
-        return "TeleHeader{" +
+        return "TelegramHdr{" +
                 "teleType=" + teleType +
                 ", teleVersion='" + teleVersion + '\'' +
                 ", teleId=" + teleId +

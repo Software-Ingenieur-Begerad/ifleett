@@ -1,6 +1,28 @@
 package de.swingbe.ifleet.model;
 
 public class Entity {
+    private final String date;
+    private final String time;
+    private final String logLevel;
+    private final String addressPartA;
+    private final String addressPartB;
+    private final String peer;
+    private final String addressNext;
+    private final String direction;
+    private final Communication cc;
+
+    public Entity(String date, String time, String logLevel, String addressPartA, String addressPartB, String peer, String addressNext, String direction, Communication cc) {
+        this.date = date;
+        this.time = time;
+        this.logLevel = logLevel;
+        this.addressPartA = addressPartA;
+        this.addressPartB = addressPartB;
+        this.peer = peer;
+        this.addressNext = addressNext;
+        this.direction = direction;
+        this.cc = cc;
+    }
+
     public String getDate() {
         return date;
     }
@@ -37,11 +59,6 @@ public class Entity {
         return cc;
     }
 
-    private final String date;
-    private final String time;
-    private final String logLevel;
-    private final String addressPartA;
-
     @Override
     public String toString() {
         return "Entity{" +
@@ -56,23 +73,5 @@ public class Entity {
                 ", cc=" + cc +
                 '}';
     }
-
-    public Entity(String date, String time, String logLevel, String addressPartA, String addressPartB, String peer, String addressNext, String direction, Communication cc) {
-        this.date = date;
-        this.time = time;
-        this.logLevel = logLevel;
-        this.addressPartA = addressPartA;
-        this.addressPartB = addressPartB;
-        this.peer = peer;
-        this.addressNext = addressNext;
-        this.direction = direction;
-        this.cc = cc;
-    }
-
-    private final String addressPartB;
-    private final String peer;
-    private final String addressNext;
-    private final String direction;
-    private final Communication cc;
 
 }
