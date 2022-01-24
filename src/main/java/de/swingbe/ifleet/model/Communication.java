@@ -20,10 +20,12 @@ public class Communication {
 
     @Override
     public String toString() {
-        return "Communication{" +
-                "header=" + header +
-                ", telegram=" + telegram +
-                '}';
+        String ccString = "Communication{";
+        ccString += header != null ? "header=" + header : "";
+        ccString += telegram != null ? "telegram=" + telegram : "";
+        ccString += '}';
+        return ccString;
+
     }
 
 }

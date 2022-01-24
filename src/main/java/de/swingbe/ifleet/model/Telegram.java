@@ -20,9 +20,10 @@ public class Telegram {
 
     @Override
     public String toString() {
-        return "Telegram{" +
-                "teleHeader=" + teleHeader +
-                ", locationMessage=" + locationMessage +
-                '}';
+        String telegramString = "Telegram{";
+        telegramString += teleHeader != null ? "teleHeader=" + teleHeader : "";
+        telegramString += locationMessage != null ? ", locationMessage=" + locationMessage : "";
+        telegramString += '}';
+        return telegramString;
     }
 }

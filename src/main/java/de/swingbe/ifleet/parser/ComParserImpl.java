@@ -40,7 +40,6 @@ class ComParserImpl implements ComParser {
     @Override
     public Communication parse(final String input) {
 
-        Communication com = null;
         Header header = null;
         Telegram telegram = null;
 
@@ -59,12 +58,6 @@ class ComParserImpl implements ComParser {
             LOG.warn("telegram NOT included");
         }
 
-        //create Communication
-        if (telegram != null && header != null) {
-            com = new Communication(header, telegram);
-        } else {
-            LOG.warn("telegram NOT available");
-        }
-        return com;
+        return new Communication(header, telegram);
     }
 }

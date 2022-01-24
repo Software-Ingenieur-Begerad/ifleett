@@ -14,8 +14,9 @@ public class LocationMessage {
 
     @Override
     public String toString() {
-        return "LocationMessage{" +
-                "position=" + position +
-                '}';
+        String positionString = "LocationMessage{";
+        positionString += position != null ? "position=" + position : "";
+        positionString += '}';
+        return positionString;
     }
 }

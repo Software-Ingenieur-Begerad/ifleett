@@ -13,20 +13,14 @@ class HeaderParserImpl implements HeaderParser {
 
     public Header parse(final String input) {
 
-        Header header = null;
         Sender sender;
-        Receiver receiver;
 
         //parse Sender
         sender = SenderParserFactory.createSenderParser().parse(input);
 
         //parse Receiver
         String inputPop = popFieldFromCom(input, 2);
-        receiver = ReceiverParserFactory.createReceiverParser().parse(inputPop);
 
-        if (sender != null && receiver != null) {
-            header = new Header(sender, receiver);
-        }
-        return header;
+        return new Header(sender, ReceiverParserFactory.createReceiverParser().parse(inputPop));
     }
 }

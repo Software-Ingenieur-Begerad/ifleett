@@ -61,17 +61,18 @@ public class Entity {
 
     @Override
     public String toString() {
-        return "Entity{" +
-                "date='" + date + '\'' +
-                ", time='" + time + '\'' +
-                ", logLevel='" + logLevel + '\'' +
-                ", addressPartA='" + addressPartA + '\'' +
-                ", addressPartB='" + addressPartB + '\'' +
-                ", peer='" + peer + '\'' +
-                ", addressNext='" + addressNext + '\'' +
-                ", direction='" + direction + '\'' +
-                ", cc=" + cc +
-                '}';
+        String eString = "Entity{";
+        eString += date != null ? "date='" + date + '\'' : "";
+        eString += time != null ? ", time='" + time + '\'' : "";
+        eString += logLevel != null ? ", logLevel='" + logLevel + '\'' : "";
+        eString += addressPartA != null ? ", addressPartA='" + addressPartA + '\'' : "";
+        eString += addressPartB != null ? ", addressPartB='" + addressPartB + '\'' : "";
+        eString += peer != null ? ", peer='" + peer + '\'' : "";
+        eString += addressNext != null ? ", addressNext='" + addressNext + '\'' : "";
+        eString += direction != null ? ", direction='" + direction + '\'' : "";
+        eString += cc != null ? ", cc=" + cc : "";
+        eString += '}';
+        return eString;
     }
 
 }

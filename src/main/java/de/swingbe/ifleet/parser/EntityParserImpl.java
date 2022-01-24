@@ -13,7 +13,6 @@ class EntityParserImpl implements EntityParser {
     @Override
     public Entity parse(final String input) {
 
-        Entity entity = null;
         String[] splits = input.split(" ");
 
         //parse date
@@ -39,13 +38,14 @@ class EntityParserImpl implements EntityParser {
         //parse addressPartA
         String addressPartA = null;
         if (splits.length > 4) {
-            addressPartA = splits[4];
+            addressPartA = splits[4].replaceFirst("\\[", "");
         }
 
         //parse addressPartB
         String addressPartB = null;
         if (splits.length > 5) {
-            addressPartB = splits[5];
+            addressPartB = splits[5].replaceFirst("/", "")
+                    .replaceFirst("\\]", "");
         }
 
         //parse peer
@@ -56,7 +56,7 @@ class EntityParserImpl implements EntityParser {
         //parse address next
         String addressNext = null;
         if (splits.length > 7) {
-            addressNext = splits[7];
+            addressNext = splits[7].replaceFirst("/", "");
         }
         //parse direction
         String direction = null;
@@ -71,10 +71,7 @@ class EntityParserImpl implements EntityParser {
             communication = ComParserFactory.createComParser().parse(inputSup);
         }
 
-        if (date != null && time != null && logLevel != null && addressPartA != null && addressPartB != null && peer != null && addressNext != null && direction != null && communication != null) {
-            entity = new Entity(date, time, logLevel, addressPartA, addressPartB, peer, addressNext, direction, communication);
-        }
-
-        return entity;
+        return new Entity(date, time, logLevel, addressPartA, addressPartB, peer,
+                addressNext, direction, communication);
     }
 }

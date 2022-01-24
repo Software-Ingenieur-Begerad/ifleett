@@ -20,9 +20,10 @@ public class Header {
 
     @Override
     public String toString() {
-        return "Header{" +
-                "sender=" + sender +
-                ", receiver=" + receiver +
-                '}';
+        String hString = "Header{";
+        hString += sender != null ? "sender=" + sender : "";
+        hString += receiver != null ? ", receiver=" + receiver : "";
+        hString += '}';
+        return hString;
     }
 }

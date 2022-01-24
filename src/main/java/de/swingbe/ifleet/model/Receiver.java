@@ -14,8 +14,9 @@ public class Receiver {
 
     @Override
     public String toString() {
-        return "Receiver{" +
-                "receiver='" + receiver + '\'' +
-                '}';
+        String rString = "Receiver{";
+        rString += receiver != null ? "receiver='" + receiver + '\'' : "";
+        rString += '}';
+        return rString;
     }
 }

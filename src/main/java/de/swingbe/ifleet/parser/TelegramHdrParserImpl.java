@@ -47,9 +47,12 @@ class TelegramHdrParserImpl implements TelegramHdrParser {
 
             if (typeIsNumeric && idIsNumeric) {
                 try {
-                    teleHeader = new TelegramHdr(Integer.parseInt(type), version, Integer.parseInt(id));
+                    teleHeader = new TelegramHdr(Integer.parseInt(type), version,
+                            Integer.parseInt(id));
                 } catch (NumberFormatException e) {
-                    LOG.error("parsing telegram header failed, message: " + e.getMessage() + ", trace: " + Arrays.toString(e.getStackTrace()));
+                    LOG.error("parsing telegram header failed, message: "
+                            + e.getMessage() + ", trace: "
+                            + Arrays.toString(e.getStackTrace()));
                 }
             }
         }

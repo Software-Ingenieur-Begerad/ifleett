@@ -21,41 +21,47 @@ public class PositionParserImpl implements PositionParser {
         //parse NetPoint
         //parse RelPosition
         //parse lat
-        String lat = null;
+        String lat = "";
         if (splits.length > 2) {
             lat = splits[2];
+        } else {
+            LOG.warn("lat unavailable");
         }
 
         //parse lon
-        String lon = null;
+        String lon = "";
         if (splits.length > 3) {
             lon = splits[3];
+        } else {
+            LOG.warn("lon unavailable");
         }
 
         //parse vel
-        String vel = null;
+        String vel = "";
         if (splits.length > 4) {
             vel = splits[4];
+        } else {
+            LOG.warn("vel unavailable");
         }
 
         //parse hdg
-        String hdg = null;
+        String hdg = "";
         if (splits.length > 5) {
             hdg = splits[5];
+        } else {
+            LOG.warn("hdg unavailable");
         }
 
-        if (lat != null && lon != null && vel != null && hdg != null) {
-            boolean latIsNumeric = isNumeric(lat);
-            boolean lonIsNumeric = isNumeric(lon);
-            boolean velIsNumeric = isNumeric(vel);
-            boolean hdgIsNumeric = isNumeric(hdg);
+        boolean latIsNumeric = isNumeric(lat);
+        boolean lonIsNumeric = isNumeric(lon);
+        boolean velIsNumeric = isNumeric(vel);
+        boolean hdgIsNumeric = isNumeric(hdg);
 
-            if (latIsNumeric && lonIsNumeric && velIsNumeric && hdgIsNumeric) {
-                try {
-                    position = new Position(Long.parseLong(lat), Long.parseLong(lon), Integer.parseInt(vel), Integer.parseInt(hdg));
-                } catch (NumberFormatException e) {
-                    LOG.error("parsing position failed, message: " + e.getMessage() + ", trace: " + Arrays.toString(e.getStackTrace()));
-                }
+        if (latIsNumeric && lonIsNumeric && velIsNumeric && hdgIsNumeric) {
+            try {
+                position = new Position(Long.parseLong(lat), Long.parseLong(lon), Integer.parseInt(vel), Integer.parseInt(hdg));
+            } catch (NumberFormatException e) {
+                LOG.error("parsing position failed, message: " + e.getMessage() + ", trace: " + Arrays.toString(e.getStackTrace()));
             }
         }
         return position;
