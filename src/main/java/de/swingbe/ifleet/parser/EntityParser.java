@@ -8,7 +8,7 @@ import de.swingbe.ifleet.model.Entity;
 public interface EntityParser {
 
     /**
-     * Returns a new {@link Entity} that holds the parses telegram.
+     * Returns a new {@link Entity} that holds the parses fields.
      *
      * @param input the {@link String} to be parsed
      * @return the parsed {@link Entity}

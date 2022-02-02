@@ -2,42 +2,66 @@ package de.swingbe.ifleet.model;
 
 public class Position {
 
-    private final long longitude;
-    private final long latitude;
-    private final int velocity;
-    private final int heading;
+    public final static int POSITION_FIELD_NO = 7;
 
-    public Position(long longitude, long latitude, int velocity, int heading) {
+    private final String netPoint;
+    private final String relPosition;
+    private final String longitude;
+    private final String latitude;
+    private final String offRoute;
+    private final String velocity;
+    private final String heading;
+
+    public Position(final String netPoint, final String relPosition, final String longitude,
+                    final String latitude, final String offRoute,
+                    final String velocity, final String heading) {
+        this.netPoint = netPoint;
+        this.relPosition = relPosition;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.offRoute = offRoute;
         this.velocity = velocity;
         this.heading = heading;
-    }
-
-    public long getLongitude() {
-        return longitude;
-    }
-
-    public long getLatitude() {
-        return latitude;
-    }
-
-    public int getVelocity() {
-        return velocity;
-    }
-
-    public int getHeading() {
-        return heading;
     }
 
     @Override
     public String toString() {
         return "Position{" +
-                "longitude=" + longitude +
-                ", latitude=" + latitude +
-                ", velocity=" + velocity +
-                ", heading=" + heading +
+                "netPoint='" + netPoint + '\'' +
+                ", relPosition='" + relPosition + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", offRoute='" + offRoute + '\'' +
+                ", velocity='" + velocity + '\'' +
+                ", heading='" + heading + '\'' +
                 '}';
     }
 
+    public String getOffRoute() {
+        return offRoute;
+    }
+
+    public String getNetPoint() {
+        return netPoint;
+    }
+
+    public String getRelPosition() {
+        return relPosition;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getVelocity() {
+        return velocity;
+    }
+
+    public String getHeading() {
+        return heading;
+    }
 }

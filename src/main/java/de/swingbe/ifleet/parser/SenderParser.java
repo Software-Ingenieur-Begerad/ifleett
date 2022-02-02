@@ -8,7 +8,7 @@ import de.swingbe.ifleet.model.Sender;
 interface SenderParser {
 
     /**
-     * Returns a new {@link Sender} that holds the parses telegram.
+     * Returns a new {@link Sender} that holds the parses fields.
      *
      * @param input the {@link String} to be parsed
      * @return the parsed {@link Sender}

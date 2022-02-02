@@ -15,7 +15,7 @@ public class Receiver {
     @Override
     public String toString() {
         String rString = "Receiver{";
-        rString += receiver != null ? "receiver='" + receiver + '\'' : "";
+        rString += receiver != null ? "receiver='" + receiver + '\'' : "" + '\'';
         rString += '}';
         return rString;
     }

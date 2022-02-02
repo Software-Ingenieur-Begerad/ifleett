@@ -2,17 +2,19 @@ package de.swingbe.ifleet.model;
 
 public class TelegramHdr {
 
-    private final int teleType;
-    private final String teleVersion;
-    private final int teleId;
+    public final static int TELEGRAM_HDR_FIELD_NO = 3;
 
-    public TelegramHdr(int teleType, String teleVersion, int teleId) {
+    private final String teleType;
+    private final String teleVersion;
+    private final String teleId;
+
+    public TelegramHdr(String teleType, String teleVersion, String teleId) {
         this.teleType = teleType;
         this.teleVersion = teleVersion;
         this.teleId = teleId;
     }
 
-    public int getTeleType() {
+    public String getTeleType() {
         return teleType;
     }
 
@@ -20,16 +22,16 @@ public class TelegramHdr {
         return teleVersion;
     }
 
-    public int getTeleId() {
+    public String getTeleId() {
         return teleId;
     }
 
     @Override
     public String toString() {
         return "TelegramHdr{" +
-                "teleType=" + teleType +
+                "teleType='" + teleType + '\'' +
                 ", teleVersion='" + teleVersion + '\'' +
-                ", teleId=" + teleId +
+                ", teleId='" + teleId + '\'' +
                 '}';
     }
 }

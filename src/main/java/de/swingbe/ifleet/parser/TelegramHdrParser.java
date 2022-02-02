@@ -8,7 +8,7 @@ import de.swingbe.ifleet.model.TelegramHdr;
 interface TelegramHdrParser {
 
     /**
-     * Returns a new {@link de.swingbe.ifleet.model.TelegramHdr} that holds the parses telegram.
+     * Returns a new {@link de.swingbe.ifleet.model.TelegramHdr} that holds the parses fields.
      *
      * @param input the {@link String} to be parsed
      * @return the parsed {@link de.swingbe.ifleet.model.TelegramHdr}

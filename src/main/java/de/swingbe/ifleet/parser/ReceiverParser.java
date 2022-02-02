@@ -8,7 +8,7 @@ import de.swingbe.ifleet.model.Receiver;
 interface ReceiverParser {
 
     /**
-     * Returns a new {@link de.swingbe.ifleet.model.Receiver} that holds the parses telegram.
+     * Returns a new {@link de.swingbe.ifleet.model.Receiver} that holds the parses fields.
      *
      * @param input the {@link String} to be parsed
      * @return the parsed {@link de.swingbe.ifleet.model.Receiver}

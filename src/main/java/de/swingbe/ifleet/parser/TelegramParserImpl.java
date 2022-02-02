@@ -3,7 +3,8 @@ package de.swingbe.ifleet.parser;
 import de.swingbe.ifleet.model.Telegram;
 import de.swingbe.ifleet.model.TelegramHdr;
 
-import static de.swingbe.ifleet.parser.ComParserImpl.popFieldFromCom;
+import static de.swingbe.ifleet.model.TelegramHdr.TELEGRAM_HDR_FIELD_NO;
+import static de.swingbe.ifleet.utils.TelegramUtils.popField;
 
 class TelegramParserImpl implements TelegramParser {
 
@@ -14,7 +15,7 @@ class TelegramParserImpl implements TelegramParser {
 
         TelegramHdr teleHeader = TelegramHdrParserFactory.createTelegramHdrParser().parse(input);
 
-        String inputNew = popFieldFromCom(input, 3);
+        String inputNew = popField(input, TELEGRAM_HDR_FIELD_NO);
 
         return new Telegram(teleHeader,
                 LocationMsgParserFactory.createLocationMsgParer().parse(inputNew));

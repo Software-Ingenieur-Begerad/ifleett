@@ -1,10 +1,9 @@
 package de.swingbe.ifleet.parser;
 
 import de.swingbe.ifleet.model.Header;
-import de.swingbe.ifleet.model.Receiver;
 import de.swingbe.ifleet.model.Sender;
 
-import static de.swingbe.ifleet.parser.ComParserImpl.popFieldFromCom;
+import static de.swingbe.ifleet.utils.TelegramUtils.popField;
 
 class HeaderParserImpl implements HeaderParser {
 
@@ -19,7 +18,7 @@ class HeaderParserImpl implements HeaderParser {
         sender = SenderParserFactory.createSenderParser().parse(input);
 
         //parse Receiver
-        String inputPop = popFieldFromCom(input, 2);
+        String inputPop = popField(input, 2);
 
         return new Header(sender, ReceiverParserFactory.createReceiverParser().parse(inputPop));
     }

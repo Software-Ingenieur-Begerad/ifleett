@@ -9,6 +9,7 @@ import java.util.Arrays;
 import static de.swingbe.ifleet.parser.TelegramHdrParserImpl.isNumeric;
 
 public class PositionParserImpl implements PositionParser {
+
     private final static Logger LOG = LoggerFactory.getLogger(PositionParserImpl.class);
 
     @Override
@@ -19,51 +20,61 @@ public class PositionParserImpl implements PositionParser {
         String[] splits = input.split("#");
 
         //parse NetPoint
-        //parse RelPosition
-        //parse lat
-        String lat = "";
-        if (splits.length > 2) {
-            lat = splits[2];
+        String netPoint = "";
+        if (splits.length > 0) {
+            netPoint = splits[0];
         } else {
-            LOG.warn("lat unavailable");
+            LOG.warn("netPoint unavailable");
+        }
+
+        //parse RelPosition
+        String relPosition = "";
+        if (splits.length > 1) {
+            relPosition = splits[1];
+        } else {
+            LOG.warn("relPosition unavailable");
         }
 
         //parse lon
         String lon = "";
-        if (splits.length > 3) {
-            lon = splits[3];
+        if (splits.length > 2) {
+            lon = splits[2];
         } else {
             LOG.warn("lon unavailable");
         }
 
+        //parse lat
+        String lat = "";
+        if (splits.length > 3) {
+            lat = splits[3];
+        } else {
+            LOG.warn("lat unavailable");
+        }
+
+        //parse offRoute
+        String offRoute = "";
+        if (splits.length > 4) {
+            offRoute = splits[4];
+        } else {
+            LOG.warn("offRoute unavailable");
+        }
+
         //parse vel
         String vel = "";
-        if (splits.length > 4) {
-            vel = splits[4];
+        if (splits.length > 5) {
+            vel = splits[5];
         } else {
             LOG.warn("vel unavailable");
         }
 
         //parse hdg
         String hdg = "";
-        if (splits.length > 5) {
-            hdg = splits[5];
+        if (splits.length > 6) {
+            hdg = splits[6];
         } else {
             LOG.warn("hdg unavailable");
         }
 
-        boolean latIsNumeric = isNumeric(lat);
-        boolean lonIsNumeric = isNumeric(lon);
-        boolean velIsNumeric = isNumeric(vel);
-        boolean hdgIsNumeric = isNumeric(hdg);
-
-        if (latIsNumeric && lonIsNumeric && velIsNumeric && hdgIsNumeric) {
-            try {
-                position = new Position(Long.parseLong(lat), Long.parseLong(lon), Integer.parseInt(vel), Integer.parseInt(hdg));
-            } catch (NumberFormatException e) {
-                LOG.error("parsing position failed, message: " + e.getMessage() + ", trace: " + Arrays.toString(e.getStackTrace()));
-            }
-        }
-        return position;
+        return new Position(netPoint, relPosition, lon, lat, offRoute, vel, hdg);
     }
 }

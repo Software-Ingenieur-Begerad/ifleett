@@ -1,17 +1,17 @@
 package de.swingbe.ifleet.parser;
 
-import de.swingbe.ifleet.model.LocationMessage;
+import de.swingbe.ifleet.model.LocationMsg;
 
 /**
- * Parses a {@link de.swingbe.ifleet.model.LocationMessage}.
+ * Parses a {@link LocationMsg}.
  */
 interface LocationMsgParser {
 
     /**
-     * Returns a new {@link de.swingbe.ifleet.model.LocationMessage} that holds the parses telegram.
+     * Returns a new {@link LocationMsg} that holds the parses fields.
      *
      * @param input the {@link String} to be parsed
-     * @return the parsed {@link de.swingbe.ifleet.model.LocationMessage}
+     * @return the parsed {@link LocationMsg}
      */
-    LocationMessage parse(final String input);
+    LocationMsg parse(final String input);
 }

@@ -15,7 +15,7 @@ public class Sender {
     @Override
     public String toString() {
         String sString = "Sender{";
-        sString += sender != null ? "sender='" + sender + '\'' : "";
+        sString += sender != null ? "sender='" + sender + '\'' : "" + '\'';
         sString += '}';
         return sString;
     }
