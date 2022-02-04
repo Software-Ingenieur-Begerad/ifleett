@@ -22,7 +22,7 @@ public class Communication {
     public String toString() {
         String ccString = "Communication{";
         ccString += header != null ? "header=" + header : "";
-        ccString += telegram != null ? "telegram=" + telegram : "";
+        ccString += telegram != null ? ", telegram=" + telegram : "";
         ccString += '}';
         return ccString;
 
