@@ -7,25 +7,21 @@ class ReceiverParserImpl implements ReceiverParser {
     @Override
     public Receiver parse(final String input) {
 
-        Receiver receiver = null;
         String[] splits = input.split("#");
 
-        //parse receiver part A
-        String receiverPartA = null;
+        //parse type
+        String type = "";
         if (splits.length > 0) {
-            receiverPartA = splits[0];
+            type = splits[0];
         }
 
-        //parse receiver part A
-        String receiverPartB = null;
+        //parse id
+        String id = "";
         if (splits.length > 1) {
-            receiverPartB = splits[1];
+            id = splits[1];
         }
 
-        if (receiverPartA != null && receiverPartB != null) {
-            receiver = new Receiver(receiverPartA + "#" + receiverPartB);
-        }
-        return receiver;
+        return new Receiver(type, id);
     }
 
 }

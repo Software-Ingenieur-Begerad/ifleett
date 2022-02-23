@@ -2,6 +2,7 @@ package de.swingbe.ifleet.parser;
 
 import de.swingbe.ifleet.model.Communication;
 import de.swingbe.ifleet.model.Entity;
+import de.swingbe.ifleet.utils.TelegramUtils;
 
 import java.util.Arrays;
 
@@ -16,19 +17,19 @@ class EntityParserImpl implements EntityParser {
         String[] splits = input.split(" ");
 
         //parse date
-        String date = null;
+        String date = "";
         if (splits.length > 0) {
             date = splits[0];
         }
 
         //parse time
-        String time = null;
+        String time = "";
         if (splits.length > 1) {
             time = splits[1];
         }
 
         //parse log level
-        String logLevel = null;
+        String logLevel = "";
         if (splits.length > 2) {
             logLevel = splits[2];
         }
@@ -36,30 +37,30 @@ class EntityParserImpl implements EntityParser {
         //index three is empty
 
         //parse addressPartA
-        String addressPartA = null;
+        String addressPartA = "";
         if (splits.length > 4) {
             addressPartA = splits[4].replaceFirst("\\[", "");
         }
 
         //parse addressPartB
-        String addressPartB = null;
+        String addressPartB = "";
         if (splits.length > 5) {
             addressPartB = splits[5].replaceFirst("/", "")
                     .replaceFirst("\\]", "");
         }
 
         //parse peer
-        String peer = null;
+        String peer = "";
         if (splits.length > 6) {
             peer = splits[6];
         }
         //parse address next
-        String addressNext = null;
+        String addressNext = "";
         if (splits.length > 7) {
             addressNext = splits[7].replaceFirst("/", "");
         }
         //parse direction
-        String direction = null;
+        String direction = "";
         if (splits.length > 8) {
             direction = splits[8];
         }

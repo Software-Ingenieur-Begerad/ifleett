@@ -11,28 +11,24 @@ class TelegramHdrParserImpl implements TelegramHdrParser {
     TelegramHdrParserImpl() {
     }
 
-    public static boolean isNumeric(String str) {
-        return str != null && str.matches("[0-9.]+");
-    }
-
     public TelegramHdr parse(final String input) {
 
         String[] splits = input.split("#");
 
-        //parse type
-        String type = null;
+        //parse teleType
+        String type = "";
         if (splits.length > 0) {
             type = splits[0];
         }
 
-        //parse version
-        String version = null;
+        //parse teleVersion
+        String version = "";
         if (splits.length > 1) {
             version = splits[1];
         }
 
-        //parse id
-        String id = null;
+        //parse teleId
+        String id = "";
         if (splits.length > 2) {
             id = splits[2];
         }

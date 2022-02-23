@@ -6,25 +6,20 @@ class SenderParserImpl implements SenderParser {
 
     public Sender parse(final String input) {
 
-        Sender sender = null;
-
         String[] splits = input.split("#");
 
-        //parse sender part A
-        String senderPartA = null;
+        //parse type
+        String type = "";
         if (splits.length > 0) {
-            senderPartA = splits[0];
+            type = splits[0];
         }
 
-        //parse sender part A
-        String senderPartB = null;
+        //parse id
+        String id = "";
         if (splits.length > 1) {
-            senderPartB = splits[1];
+            id = splits[1];
         }
 
-        if (senderPartA != null && senderPartB != null) {
-            sender = new Sender(senderPartA + "#" + senderPartB);
-        }
-        return sender;
+        return new Sender(type, id);
     }
 }
