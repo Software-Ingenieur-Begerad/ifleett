@@ -18,8 +18,8 @@ class TelegramParserImplTest {
         Entity entity = new Entity("2021-11-30", "11:24:13,438",
                 "INFO", "[BON", "/195.30.103.89:58713]",
                 "(NpmTCPAcceptedChannel)", "(/195.30.103.89:58713)",
-                "sent", new Communication(new Header(new Sender("<I#WOL/234"),
-                new Receiver("B#")), new Telegram(
+                "sent", new Communication(new Header(new Sender("I", "WOL/234"),
+                new Receiver("B", "")), new Telegram(
                 new TelegramHdr("1", "1.8", "1"),
                 new LocationMsg(new Position("netPoint", "relPosition",
                         "87263783", "529019052", "0",
