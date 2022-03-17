@@ -26,7 +26,7 @@ class LocationMsgParserImpl implements LocationMsgParser {
         }
 
         //parse trip
-        inputNew = popField(input, DRIVER_NO_FIELD_NO);
+        inputNew = popField(inputNew, DRIVER_NO_FIELD_NO);
         return new LocationMsg(position, driverNo, TripParserFactory.createTripParser().parse(inputNew));
     }
 }
