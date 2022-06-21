@@ -11,7 +11,7 @@ class SenderParserImpl implements SenderParser {
         //parse type
         String type = "";
         if (splits.length > 0) {
-            type = splits[0];
+            type = splits[0].replace("<", "");
         }
 
         //parse id

@@ -1,5 +1,7 @@
 package de.swingbe.ifleet.model;
 
+import java.util.Objects;
+
 public class Entity {
     private final String date;
     private final String time;
@@ -31,6 +33,11 @@ public class Entity {
         return time;
     }
 
+    @Override
+    public String toString() {
+        return "Entity{" + "date='" + date + '\'' + ", time='" + time + '\'' + ", logLevel='" + logLevel + '\'' + ", addressPartA='" + addressPartA + '\'' + ", addressPartB='" + addressPartB + '\'' + ", peer='" + peer + '\'' + ", addressNext='" + addressNext + '\'' + ", direction='" + direction + '\'' + ", cc=" + cc + '}';
+    }
+
     public String getLogLevel() {
         return logLevel;
     }
@@ -60,19 +67,15 @@ public class Entity {
     }
 
     @Override
-    public String toString() {
-        String eString = "Entity{";
-        eString += date != null ? "date='" + date + '\'' : "";
-        eString += time != null ? ", time='" + time + '\'' : "";
-        eString += logLevel != null ? ", logLevel='" + logLevel + '\'' : "";
-        eString += addressPartA != null ? ", addressPartA='" + addressPartA + '\'' : "";
-        eString += addressPartB != null ? ", addressPartB='" + addressPartB + '\'' : "";
-        eString += peer != null ? ", peer='" + peer + '\'' : "";
-        eString += addressNext != null ? ", addressNext='" + addressNext + '\'' : "";
-        eString += direction != null ? ", direction='" + direction + '\'' : "";
-        eString += cc != null ? ", cc=" + cc : "";
-        eString += '}';
-        return eString;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Entity entity = (Entity) o;
+        return date.equals(entity.date) && time.equals(entity.time) && logLevel.equals(entity.logLevel) && addressPartA.equals(entity.addressPartA) && addressPartB.equals(entity.addressPartB) && peer.equals(entity.peer) && addressNext.equals(entity.addressNext) && direction.equals(entity.direction) && cc.equals(entity.cc);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(date, time, logLevel, addressPartA, addressPartB, peer, addressNext, direction, cc);
+    }
 }

@@ -1,13 +1,14 @@
 package de.swingbe.ifleet.model;
 
+import java.util.Objects;
+
 public class LocationMsg {
 
     private final Position position;
     private final String driverNumber;
     private final Trip trip;
 
-    public LocationMsg(final Position position, final String driverNumber,
-                       final Trip trip) {
+    public LocationMsg(final Position position, final String driverNumber, final Trip trip) {
         this.position = position;
         this.driverNumber = driverNumber;
         this.trip = trip;
@@ -15,13 +16,7 @@ public class LocationMsg {
 
     @Override
     public String toString() {
-        String tString = "LocationMsg{" +
-                "position=" + position +
-                ", driverNumber='" + driverNumber + '\'';
-        tString += trip != null ? ", trip=" + trip + '\'' : "" + '\'';
-        tString += '}';
-
-        return tString;
+        return "LocationMsg{" + "position=" + position + ", driverNumber='" + driverNumber + '\'' + ", trip=" + trip + '}';
     }
 
     public String getDriverNumber() {
@@ -36,4 +31,16 @@ public class LocationMsg {
         return position;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LocationMsg that = (LocationMsg) o;
+        return position.equals(that.position) && driverNumber.equals(that.driverNumber) && trip.equals(that.trip);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position, driverNumber, trip);
+    }
 }

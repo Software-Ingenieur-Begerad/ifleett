@@ -1,8 +1,8 @@
 package de.swingbe.ifleet.model;
 
-public class Trip {
+import java.util.Objects;
 
-    public final static int TRIP_FIELD_NO = 8;
+public class Trip {
 
     private final String blockNo;
     private final String lineNo;
@@ -12,10 +12,7 @@ public class Trip {
     private final String loadDegree;
     private final String destinationNo;
     private final String tripType;
-
-    public Trip(final String blockNo, final String lineNo, final String tripNo,
-                final String routeNo, final String deviation, final String loadDegree,
-                final String destinationNo, final String tripType) {
+    public Trip(final String blockNo, final String lineNo, final String tripNo, final String routeNo, final String deviation, final String loadDegree, final String destinationNo, final String tripType) {
         this.blockNo = blockNo;
         this.lineNo = lineNo;
         this.tripNo = tripNo;
@@ -27,17 +24,21 @@ public class Trip {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Trip trip = (Trip) o;
+        return blockNo.equals(trip.blockNo) && lineNo.equals(trip.lineNo) && tripNo.equals(trip.tripNo) && routeNo.equals(trip.routeNo) && deviation.equals(trip.deviation) && loadDegree.equals(trip.loadDegree) && destinationNo.equals(trip.destinationNo) && tripType.equals(trip.tripType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(blockNo, lineNo, tripNo, routeNo, deviation, loadDegree, destinationNo, tripType);
+    }
+
+    @Override
     public String toString() {
-        return "Trip{" +
-                "blockNo='" + blockNo + '\'' +
-                ", lineNo='" + lineNo + '\'' +
-                ", tripNo='" + tripNo + '\'' +
-                ", routeNo='" + routeNo + '\'' +
-                ", deviation='" + deviation + '\'' +
-                ", loadDegree='" + loadDegree + '\'' +
-                ", destinationNo='" + destinationNo + '\'' +
-                ", tripType='" + tripType + '\'' +
-                '}';
+        return "Trip{" + "blockNo='" + blockNo + '\'' + ", lineNo='" + lineNo + '\'' + ", tripNo='" + tripNo + '\'' + ", routeNo='" + routeNo + '\'' + ", deviation='" + deviation + '\'' + ", loadDegree='" + loadDegree + '\'' + ", destinationNo='" + destinationNo + '\'' + ", tripType='" + tripType + '\'' + '}';
     }
 
     public String getBlockNo() {

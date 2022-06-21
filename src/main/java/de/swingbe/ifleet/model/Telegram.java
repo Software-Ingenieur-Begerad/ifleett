@@ -1,5 +1,7 @@
 package de.swingbe.ifleet.model;
 
+import java.util.Objects;
+
 public class Telegram {
 
     private final TelegramHdr teleHeader;
@@ -20,10 +22,19 @@ public class Telegram {
 
     @Override
     public String toString() {
-        String telegramString = "Telegram{";
-        telegramString += teleHeader != null ? "teleHeader=" + teleHeader + '\'' : "" + '\'';
-        telegramString += locationMsg != null ? ", locationMsg=" + locationMsg + '\'' : "" + '\'';
-        telegramString += '}';
-        return telegramString;
+        return "Telegram{" + "teleHeader=" + teleHeader + ", locationMsg=" + locationMsg + '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Telegram telegram = (Telegram) o;
+        return teleHeader.equals(telegram.teleHeader) && locationMsg.equals(telegram.locationMsg);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(teleHeader, locationMsg);
     }
 }
